@@ -1,0 +1,190 @@
+
+//slider1: Dependendo da idade, o pessoa pode tirar o titulo de eleitor, deve tirar o titulo de eleitor
+//e votar, ou então seu voto, a partir da idade, passa a ser facultativo
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Slider de Temperatura',
+      theme: ThemeData(primarySwatch: Colors.red),
+      home: const TemperatureSelector(),
+    );
+  }
+}
+
+class TemperatureSelector extends StatefulWidget {
+  const TemperatureSelector({super.key});
+
+  @override
+  State<TemperatureSelector> createState() => _TemperatureSelectorState();
+}
+
+class _TemperatureSelectorState extends State<TemperatureSelector> {
+  double _temperature = 20; // Valor inicial (em graus Celsius)
+
+  String getTemperatureMessage(double temp) {
+    if (temp < 0) {
+      return 'Está muito frio! 🥶';
+    } else if (temp < 15) {
+      return 'Frio, mas suportável! 🧥';
+    } else if (temp < 25) {
+      return 'Clima agradável! 😊';
+    } else if (temp < 35) {
+      return 'Está ficando quente! 🌞';
+    } else {
+      return 'Calor extremo! 🥵';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Controle de Temperatura'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Selecione a Temperatura (°C):',
+              style: TextStyle(fontSize: 20),
+            ),
+            Slider(
+              value: _temperature,
+              min: -10,
+              max: 50,
+              divisions: 60,
+              label: '${_temperature.round()}°C',
+              onChanged: (value) {
+                setState(() {
+                  _temperature = value;
+                });
+              },
+            ),
+            Text(
+              '${_temperature.round()}°C',
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              getTemperatureMessage(_temperature),
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+//
+
+//slider2: Controla temperatura, dependendo da temperatura, o tempo pode
+//estar quente ou frio
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Slider de Idade',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: const AgeSelector(),
+    );
+  }
+}
+
+class AgeSelector extends StatefulWidget {
+  const AgeSelector({super.key});
+
+  @override
+  State<AgeSelector> createState() => _AgeSelectorState();
+}
+
+class _AgeSelectorState extends State<AgeSelector> {
+  double _age = 18; // Idade inicial
+
+  String _actionMessage = 'Selecione sua idade para ver uma ação.';
+
+  void _performAction(double age) {
+    setState(() {
+      if (age <= 15) {
+        _actionMessage = 'Você tem ${age.round()} anos. Aproveite a juventude!';
+      } else if (age > 15 && age < 18) {
+        _actionMessage = 'Você tem ${age.round()} anos. Título de eleitor é facultativo!';
+      } else if (age >= 18 && age < 65) {
+        _actionMessage = 'Você tem ${age.round()} anos. Título de eleitor obrigatório, você deve votar!';
+      } else {
+        _actionMessage = 'Você tem ${age.round()} anos. Seu voto é facultativo!';
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Seleção de Idade'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Selecione sua idade:', style: TextStyle(fontSize: 20)),
+            Slider(
+              value: _age,
+              min: 0,
+              max: 100,
+              divisions: 100,
+              label: _age.round().toString(),
+              onChanged: (value) {
+                setState(() {
+                  _age = value;
+                });
+              },
+              onChangeEnd: (value) {
+                _performAction(value);
+              },
+            ),
+            Text(
+              'Idade selecionada: ${_age.round()} anos',
+              style: const TextStyle(fontSize: 18),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              _actionMessage,
+              style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+//
