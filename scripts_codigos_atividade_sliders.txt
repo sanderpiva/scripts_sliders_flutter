@@ -1,6 +1,6 @@
 
-//slider1: Dependendo da idade, o pessoa pode tirar o titulo de eleitor, deve tirar o titulo de eleitor
-//e votar, ou então seu voto, a partir da idade, passa a ser facultativo
+//slider1: Controla temperatura, dependendo da temperatura, o tempo pode
+//estar quente ou frio, muito quente ou muito frio
 
 import 'package:flutter/material.dart';
 
@@ -31,6 +31,8 @@ class TemperatureSelector extends StatefulWidget {
 
 class _TemperatureSelectorState extends State<TemperatureSelector> {
   double _temperature = 20; // Valor inicial (em graus Celsius)
+
+   //site para pegar emojis: https://getemoji.com/
 
   String getTemperatureMessage(double temp) {
     if (temp < 0) {
@@ -90,11 +92,95 @@ class _TemperatureSelectorState extends State<TemperatureSelector> {
   }
 }
 
+//slider2
+
+//No novo contexto, podemos imaginar o ajuste de brilho e contraste de uma tela.
+// Ao aumentar o brilho (Slider 1), o contraste (Slider 2) diminui proporcionalmente para evita
+// que a imagem fique muito saturada ou desbalanceada. 
+// Da mesma forma, se o brilho for reduzido, o contraste aumenta para manter a qualidade visual.
+
+import 'package:flutter/material.dart';
+
+/// Flutter code sample for [Slider].
+
+void main() => runApp(const SliderApp());
+
+class SliderApp extends StatelessWidget {
+  const SliderApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: SliderExample(),
+    );
+  }
+}
+
+class SliderExample extends StatefulWidget {
+  const SliderExample({super.key});
+
+  @override
+  State<SliderExample> createState() => _SliderExampleState();
+}
+
+class _SliderExampleState extends State<SliderExample> {
+  double _brightness = 0.5;
+  double _contrast = 0.5;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Ajuste de Brilho e Contraste')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Brilho: ${(_brightness * 100).toInt()}%',
+            style: const TextStyle(fontSize: 18),
+          ),
+          Slider(
+            value: _brightness,
+            min: 0,
+            max: 1,
+            divisions: 100,
+            label: (_brightness * 100).toStringAsFixed(0),
+            onChanged: (double value) {
+              setState(() {
+                _brightness = value;
+                _contrast = 1 - value; // O contraste é ajustado automaticamente.
+              });
+            },
+          ),
+          Text(
+            'Contraste: ${(_contrast * 100).toInt()}%',
+            style: const TextStyle(fontSize: 18),
+          ),
+          Slider(
+            value: _contrast,
+            min: 0,
+            max: 1,
+            divisions: 100,
+            label: (_contrast * 100).toStringAsFixed(0),
+            onChanged: (double value) {
+              setState(() {
+                _contrast = value;
+                _brightness = 1 - value; // O brilho é ajustado automaticamente.
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 //
 
-//slider2: Controla temperatura, dependendo da temperatura, o tempo pode
-//estar quente ou frio
+
+//slider3: Dependendo da idade, a pessoa pode tirar o titulo de eleitor, deve tirar o titulo de eleitor
+//e votar, ou então seu voto, a partir da idade, passa a ser facultativo
+
 
 import 'package:flutter/material.dart';
 
@@ -134,7 +220,7 @@ class _AgeSelectorState extends State<AgeSelector> {
         _actionMessage = 'Você tem ${age.round()} anos. Aproveite a juventude!';
       } else if (age > 15 && age < 18) {
         _actionMessage = 'Você tem ${age.round()} anos. Título de eleitor é facultativo!';
-      } else if (age >= 18 && age < 65) {
+      } else if (age >= 18 && age < 70) {
         _actionMessage = 'Você tem ${age.round()} anos. Título de eleitor obrigatório, você deve votar!';
       } else {
         _actionMessage = 'Você tem ${age.round()} anos. Seu voto é facultativo!';
