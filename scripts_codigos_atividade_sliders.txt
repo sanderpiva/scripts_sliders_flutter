@@ -92,9 +92,7 @@ class _TemperatureSelectorState extends State<TemperatureSelector> {
   }
 }
 
-//slider2
-
-// No novo contexto, podemos imaginar o ajuste de brilho e contraste de uma tela.
+//slider2: No novo contexto, podemos imaginar o ajuste de brilho e contraste de uma tela.
 // Ao aumentar o brilho (Slider 1), o contraste (Slider 2) diminui proporcionalmente para evita
 // que a imagem fique muito saturada ou desbalanceada. 
 // Da mesma forma, se o brilho for reduzido, o contraste aumenta para manter a qualidade visual.
