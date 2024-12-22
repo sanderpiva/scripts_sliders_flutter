@@ -1,6 +1,6 @@
 
-//slider1: Controla temperatura, dependendo da temperatura, o tempo pode
-//estar quente ou frio, muito quente ou muito frio
+//slider1: Controla temperatura. Dependendo da temperatura, o tempo pode
+//estar muito frio, frio, clima agradável, está ficando quente, e calor extremo.
 
 import 'package:flutter/material.dart';
 
@@ -94,7 +94,7 @@ class _TemperatureSelectorState extends State<TemperatureSelector> {
 
 //slider2
 
-//No novo contexto, podemos imaginar o ajuste de brilho e contraste de uma tela.
+// No novo contexto, podemos imaginar o ajuste de brilho e contraste de uma tela.
 // Ao aumentar o brilho (Slider 1), o contraste (Slider 2) diminui proporcionalmente para evita
 // que a imagem fique muito saturada ou desbalanceada. 
 // Da mesma forma, se o brilho for reduzido, o contraste aumenta para manter a qualidade visual.
@@ -147,7 +147,7 @@ class _SliderExampleState extends State<SliderExample> {
             onChanged: (double value) {
               setState(() {
                 _brightness = value;
-                _contrast = 1 - value; // O contraste é ajustado automaticamente.
+                _contrast = 1 - value; 
               });
             },
           ),
@@ -164,7 +164,7 @@ class _SliderExampleState extends State<SliderExample> {
             onChanged: (double value) {
               setState(() {
                 _contrast = value;
-                _brightness = 1 - value; // O brilho é ajustado automaticamente.
+                _brightness = 1 - value; 
               });
             },
           ),
@@ -174,13 +174,11 @@ class _SliderExampleState extends State<SliderExample> {
   }
 }
 
-
 //
 
-
-//slider3: Dependendo da idade, a pessoa pode tirar o titulo de eleitor, deve tirar o titulo de eleitor
-//e votar, ou então seu voto, a partir da idade, passa a ser facultativo
-
+//slider3: Dependendo da idade, a pessoa pode tirar o titulo de eleitor, mas é facultativo votar (16 - 17 anos), 
+//deve tirar o titulo de eleitor e votar (voto obrigatório: 18 anos até 69 anos), ou então seu voto, a partir da idade, 
+//passa a ser facultativo (70 anos ou mais).
 
 import 'package:flutter/material.dart';
 
@@ -217,9 +215,9 @@ class _AgeSelectorState extends State<AgeSelector> {
   void _performAction(double age) {
     setState(() {
       if (age <= 15) {
-        _actionMessage = 'Você tem ${age.round()} anos. Aproveite a juventude!';
+        _actionMessage = 'Você tem ${age.round()} anos. Aproveite a infância/juventude!';
       } else if (age > 15 && age < 18) {
-        _actionMessage = 'Você tem ${age.round()} anos. Título de eleitor é facultativo!';
+        _actionMessage = 'Você tem ${age.round()} anos. Título de eleitor pode ser tirado, mas o voto é facultativo!';
       } else if (age >= 18 && age < 70) {
         _actionMessage = 'Você tem ${age.round()} anos. Título de eleitor obrigatório, você deve votar!';
       } else {
@@ -271,6 +269,5 @@ class _AgeSelectorState extends State<AgeSelector> {
     );
   }
 }
-
 
 //
