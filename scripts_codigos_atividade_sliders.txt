@@ -1,6 +1,7 @@
 
-//slider1: Controla temperatura. Dependendo da temperatura, o tempo pode
-//estar muito frio, frio, clima agradável, está ficando quente, e calor extremo.
+
+//exemplo_slider1: Controla temperatura. Dependendo da temperatura, o tempo pode
+//estar muito frio, frio, clima agradável, está ficando quente e calor extremo.
 
 import 'package:flutter/material.dart';
 
@@ -92,23 +93,24 @@ class _TemperatureSelectorState extends State<TemperatureSelector> {
   }
 }
 
-//slider2: No novo contexto, podemos imaginar o ajuste de brilho e contraste de uma tela.
-// Ao aumentar o brilho (Slider 1), o contraste (Slider 2) diminui proporcionalmente para evita
+//exemplo_slider2: No novo contexto, podemos imaginar o ajuste de brilho e contraste de uma tela.
+// Ao aumentar o brilho (barra de Slider 1), o contraste (barra de Slider 2) diminui proporcionalmente para evitar
 // que a imagem fique muito saturada ou desbalanceada. 
 // Da mesma forma, se o brilho for reduzido, o contraste aumenta para manter a qualidade visual.
 
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [Slider].
+void main() => runApp(const MyApp());
 
-void main() => runApp(const SliderApp());
-
-class SliderApp extends StatelessWidget {
-  const SliderApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Slider para ajuste de Brilho e Contraste',
       home: SliderExample(),
     );
   }
@@ -145,7 +147,8 @@ class _SliderExampleState extends State<SliderExample> {
             onChanged: (double value) {
               setState(() {
                 _brightness = value;
-                _contrast = 1 - value; 
+                _contrast =
+                    1 - value; // O contraste é ajustado automaticamente.
               });
             },
           ),
@@ -162,7 +165,7 @@ class _SliderExampleState extends State<SliderExample> {
             onChanged: (double value) {
               setState(() {
                 _contrast = value;
-                _brightness = 1 - value; 
+                _brightness = 1 - value; // O brilho é ajustado automaticamente.
               });
             },
           ),
@@ -174,8 +177,8 @@ class _SliderExampleState extends State<SliderExample> {
 
 //
 
-//slider3: Dependendo da idade, a pessoa pode tirar o titulo de eleitor, mas é facultativo votar (16 - 17 anos), 
-//deve tirar o titulo de eleitor e votar (voto obrigatório: 18 anos até 69 anos), ou então seu voto, a partir da idade, 
+//exemplo_slider3: Dependendo da idade, a pessoa pode tirar o titulo de eleitor, mas é facultativo votar (16 - 17 anos), 
+//deve tirar o titulo de eleitor e votar (voto obrigatório: 18 anos até 69 anos), ou então seu voto, a partir de certa idade, 
 //passa a ser facultativo (70 anos ou mais).
 
 import 'package:flutter/material.dart';
