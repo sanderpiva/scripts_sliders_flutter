@@ -1,4 +1,4 @@
-#Slider em Flutter
+# Slider em Flutter
 
 exemplo_slider1: Controlador de temperatura. Dependendo da temperatura, o tempo pode estar muito frio, frio, clima agradável, está ficando quente e calor extremo.
 
