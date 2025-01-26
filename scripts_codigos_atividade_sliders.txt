@@ -179,7 +179,8 @@ class _SliderExampleState extends State<SliderExample> {
 
 //exemplo_bonus: Dependendo da idade, a pessoa pode tirar o titulo de eleitor, mas é facultativo votar (16 - 17 anos), 
 //deve tirar o titulo de eleitor e votar (voto obrigatório: 18 anos até 69 anos), ou então seu voto, a partir de certa idade, 
-//passa a ser facultativo (70 anos ou mais).
+//passa a ser facultativo (70 anos ou mais). Logo, dependendo da idade do eleitor selecionada na barra de Slider, uma mensagem
+//específica será impressa em tela.
 
 import 'package:flutter/material.dart';
 
