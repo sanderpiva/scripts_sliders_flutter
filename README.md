@@ -13,8 +13,8 @@ que a imagem fique muito saturada ou desbalanceada. Da mesma forma, se o brilho 
 
 # Equipe
 
-André Luiz
-Gabriel Pala
-Emerson Renaki
+André Luiz;
+Gabriel Pala;
+Emerson Renaki;
 Sander Piva
 
